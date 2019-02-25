@@ -16,6 +16,7 @@
 
 package rkr.simplekeyboard.inputmethod.latin.utils;
 
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.inputmethod.InputMethodSubtype;
@@ -56,7 +57,7 @@ public final class AdditionalSubtypeUtils {
         final String platformVersionDependentExtraValues = getPlatformVersionDependentExtraValue(keyboardLayoutSetName, isAsciiCapable);
         final int platformVersionIndependentSubtypeId =
                 getPlatformVersionIndependentSubtypeId(localeString, keyboardLayoutSetName);
-        InputMethodSubtype.InputMethodSubtypeBuilder builder = new InputMethodSubtype.InputMethodSubtypeBuilder();
+        /*InputMethodSubtype.InputMethodSubtypeBuilder builder = new InputMethodSubtype.InputMethodSubtypeBuilder();
 
         builder.setSubtypeNameResId(nameId)
             .setSubtypeIconResId(R.drawable.ic_ime_switcher_dark)
@@ -66,7 +67,33 @@ public final class AdditionalSubtypeUtils {
             .setOverridesImplicitlyEnabledSubtype(false)
             .setIsAuxiliary(false)
             .setSubtypeId(platformVersionIndependentSubtypeId);
-        return builder.build();
+        return builder.build();*/
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk >= Build.VERSION_CODES.KITKAT) {
+            InputMethodSubtype.InputMethodSubtypeBuilder builder = new InputMethodSubtype.InputMethodSubtypeBuilder();
+
+            builder.setSubtypeNameResId(nameId)
+                    .setSubtypeIconResId(R.drawable.ic_ime_switcher_dark)
+                    .setSubtypeLocale(localeString)
+                    .setSubtypeMode(KEYBOARD_MODE)
+                    .setSubtypeExtraValue(platformVersionDependentExtraValues)
+                    .setOverridesImplicitlyEnabledSubtype(false)
+                    .setIsAuxiliary(false)
+                    .setSubtypeId(platformVersionIndependentSubtypeId);
+
+            return builder.build();
+        } else {
+            InputMethodSubtype inputMethodSubtype = new InputMethodSubtype(
+                    nameId,
+                    R.drawable.ic_ime_switcher_dark,
+                    localeString,
+                    KEYBOARD_MODE,
+                    platformVersionDependentExtraValues,
+                    false,
+                    false
+            );
+            return inputMethodSubtype;
+        }
     }
 
     public static InputMethodSubtype createDummyAdditionalSubtype(
