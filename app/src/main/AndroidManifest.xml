@@ -21,8 +21,6 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher_keyboard"
-        android:label="@string/english_ime_name"
         android:supportsRtl="true">
         <activity
             android:name=".keyboard.SetupActivity"
@@ -36,7 +34,7 @@
         <!-- Services -->
         <service
             android:name=".latin.LatinIME"
-            android:label="@string/english_ime_name"
+            android:label="@string/goomer_keyboard"
             android:permission="android.permission.BIND_INPUT_METHOD">
             <intent-filter>
                 <action android:name="android.view.InputMethod" />
