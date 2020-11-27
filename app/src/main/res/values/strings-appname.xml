@@ -22,5 +22,5 @@
     <string name="english_ime_name" translatable="false">Simple Keyboard</string>
     <string name="english_ime_settings" translatable="false">Simple Keyboard Settings</string>
     <string name="english_ime_setup" translatable="false">Setup Simple Keyboard</string>
-    <string name="goomer_keyboard" translatable="false">Goomer Keyboard</string>
+    <string name="goomer_keyboard" translatable="false">Teclado Goomer</string>
 </resources>
