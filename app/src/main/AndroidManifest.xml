@@ -5,14 +5,13 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
+        android:icon="@drawable/ic_launcher_keyboard"
         android:allowBackup="true"
         android:supportsRtl="true">
         <activity android:name=".MainActivity">
-            <!--<intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
         <activity
             android:icon="@drawable/ic_keyboard_goomer"
